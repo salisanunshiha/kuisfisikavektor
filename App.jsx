@@ -22,287 +22,333 @@ const QUIZ_QUESTION_COUNT = 15;        // 15 Soal Acak per Siswa dari 20 Bank So
 // ============================================================================
 const QUESTION_BANK = [
   {
-    id: 1,
-    level: "C1 • Mengingat | Pilihan Ganda",
-    stimulus: "Dalam fisika dan navigasi penerbangan, besaran dibagi menjadi dua kelompok utama berdasarkan ada tidaknya arah yang menyertai nilai pengukurannya.",
-    question: "Kelompok besaran berikut yang seluruhnya merupakan besaran vektor adalah...",
+    id: "VK-01",
+    type: "PG",
+    level: "C1",
+    topic: "Besaran Skalar dan Vektor",
+    stimulus: "Dalam pengamatan gerak kendaraan di Jalan Raya Darmo Surabaya, dicatat beberapa besaran fisika berikut: (1) Kelajuan rata-rata motor 45 km/jam, (2) Perpindahan mobil 3,5 km ke arah selatan, (3) Massa paket 4 kg, (4) Gaya dorong mesin 1.200 N ke depan, (5) Waktu tempuh 12 menit.",
+    question: "Kelompok besaran yang termasuk besaran vektor ditunjukkan oleh nomor ....",
     options: [
-      "Perpindahan, kecepatan, gaya, dan momentum",
-      "Jarak, kelajuan, massa, dan waktu",
-      "Percepatan, usaha, energi kinetik, dan suhu",
-      "Gaya, tekanan, luas, dan volume",
-      "Impuls, daya, massa jenis, dan perpindahan"
+      "A. (1) dan (3)",
+      "B. (2) dan (4)",
+      "C. (1), (2), dan (5)",
+      "D. (2), (3), dan (4)",
+      "E. (3), (4), dan (5)"
     ],
-    correct: 0
+    answer: "B",
+    explanation: "Besaran vektor memiliki nilai dan arah, yaitu perpindahan (2) dan gaya (4). Kelajuan, massa, dan waktu adalah besaran skalar."
   },
   {
-    id: 2,
-    level: "C1 • Mengingat | Benar - Salah",
-    stimulus: "Sebuah vektor gaya digambarkan dalam bentuk anak panah berarah pada bidang koordinat Kartesius dua dimensi.",
-    question: "Tentukan kebenaran (Benar/Salah) dari ketiga pernyataan berikut mengenai representasi geometris vektor secara berurutan:\n1. Panjang anak panah menyatakan besar (nilai) vektor tersebut.\n2. Arah ujung anak panah menunjukkan arah vektor.\n3. Dua vektor dikatakan sama apabila memiliki besar yang sama meskipun arahnya berlawanan.",
+    id: "VK-02",
+    type: "PG",
+    level: "C2",
+    topic: "Notasi dan Representasi Grafis Vektor",
+    stimulus: "Sebuah vektor gaya digambarkan berupa anak panah dari titik pangkal P menuju titik ujung Q dengan panjang ruas garis 6 cm. Diketahui skala gambar yang digunakan adalah 1 cm mewakili 15 N.",
+    question: "Pernyataan yang paling tepat mengenai representasi vektor gaya tersebut adalah ....",
     options: [
-      "Benar – Benar – Salah",
-      "Benar – Benar – Benar",
-      "Benar – Salah – Salah",
-      "Salah – Benar – Salah",
-      "Salah – Salah – Benar"
+      "A. Besar gaya adalah 90 N dengan arah dari Q ke P",
+      "B. Besar gaya adalah 90 N dengan arah dari P ke Q",
+      "C. Besar gaya adalah 21 N dengan arah dari P ke Q",
+      "D. Besar gaya adalah 2,5 N dengan arah dari Q ke P",
+      "E. Panjang anak panah hanya menunjukkan arah tanpa menyatakan besar gaya"
     ],
-    correct: 0
+    answer: "B",
+    explanation: "Panjang panah menyatakan besar vektor (6 cm × 15 N/cm = 90 N) dan ujung panah menyatakan arah vektor (dari pangkal P ke ujung Q)."
   },
   {
-    id: 3,
-    level: "C2 • Memahami | Pilihan Ganda",
-    stimulus: "Seorang siswa berjalan kaki dari gerbang sekolah lurus ke timur sejauh 40 meter, kemudian berbalik arah lurus ke barat sejauh 40 meter hingga kembali tepat di gerbang sekolah.",
-    question: "Pernyataan yang paling tepat mengenai jarak tempuh dan perpindahan siswa tersebut adalah...",
+    id: "VK-03",
+    type: "PG",
+    level: "C3",
+    topic: "Resultan Vektor Segaris",
+    stimulus: "Tiga orang siswa mendorong sebuah peti peralatan laboratorium fisika secara segaris di atas lantai datar. Siswa pertama dan kedua mendorong ke arah kanan masing-masing dengan gaya 65 N dan 85 N, sedangkan siswa ketiga menahan dari arah berlawanan (ke kiri) dengan gaya 40 N.",
+    question: "Besar dan arah resultan gaya yang bekerja pada peti tersebut adalah ....",
     options: [
-      "Jarak tempuh 80 meter dan perpindahan 0 meter",
-      "Jarak tempuh 0 meter dan perpindahan 80 meter",
-      "Jarak tempuh 80 meter dan perpindahan 80 meter ke barat",
-      "Jarak tempuh 40 meter dan perpindahan 0 meter",
-      "Jarak tempuh 80 meter dan perpindahan 40 meter ke timur"
+      "A. 110 N ke arah kanan",
+      "B. 110 N ke arah kiri",
+      "C. 190 N ke arah kanan",
+      "D. 60 N ke arah kanan",
+      "E. 150 N ke arah kiri"
     ],
-    correct: 0
+    answer: "A",
+    explanation: "Ambil arah kanan positif: R = +65 + 85 - 40 = +110 N (berarti 110 N ke arah kanan)."
   },
   {
-    id: 4,
-    level: "C2 • Memahami | Pilihan Ganda Kompleks",
-    stimulus: "Diketahui dua buah vektor gaya F₁ = 10 N dan F₂ = 6 N bekerja pada satu titik tangkap yang sama dengan sudut apit θ yang dapat diubah-ubah dari 0° hingga 180°. Perhatikan pernyataan berikut:\n(1) Resultan maksimum kedua vektor adalah 16 N ketika sudut apitnya 0°.\n(2) Resultan minimum kedua vektor adalah 4 N ketika sudut apitnya 180°.\n(3) Nilai resultan kedua vektor tidak mungkin bernilai 2 N.\n(4) Ketika kedua vektor saling tegak lurus (θ = 90°), resultannya bernilai 14 N.",
-    question: "Pernyataan yang benar ditunjukkan oleh nomor...",
+    id: "VK-04",
+    type: "PG",
+    level: "C3",
+    topic: "Perpindahan Dua Dimensi (Tegak Lurus)",
+    stimulus: "Seorang kurir mengantar dokumen dari kantor pos bergerak lurus ke arah timur sejauh 800 meter, kemudian berbelok tegak lurus ke arah utara sejauh 600 meter hingga tiba di alamat tujuan.",
+    question: "Besar perpindahan total yang ditempuh kurir tersebut adalah ....",
     options: [
-      "(1), (2), dan (3)",
-      "(1) dan (2) saja",
-      "(1), (3), dan (4)",
-      "(2) dan (4) saja",
-      "(1), (2), (3), dan (4)"
+      "A. 200 meter",
+      "B. 700 meter",
+      "C. 1.000 meter",
+      "D. 1.400 meter",
+      "E. 4.800 meter"
     ],
-    correct: 0
+    answer: "C",
+    explanation: "Karena kedua lintasan saling tegak lurus (90°), besar perpindahan R = √(800² + 600²) = √(640.000 + 360.000) = 1.000 meter."
   },
   {
-    id: 5,
-    level: "C3 • Menerapkan | Pilihan Ganda",
-    stimulus: "Sebuah drone pemetaan terbang mendatar ke arah timur sejauh 300 meter, kemudian berbelok tegak lurus ke arah utara sejauh 400 meter untuk mengambil foto udara.",
-    question: "Besar perpindahan total drone dari titik awal keberangkatan hingga posisi akhir adalah...",
+    id: "VK-05",
+    type: "PG",
+    level: "C3",
+    topic: "Metode Poligon Vektor",
+    stimulus: "Diberikan lima buah vektor A, B, C, D, dan E yang digambarkan secara berurutan dengan metode poligon: ujung vektor A bertemu pangkal B, ujung B bertemu pangkal C, ujung C bertemu pangkal D, dan pangkal vektor E diletakkan berimpit dengan pangkal vektor A sedangkan ujung vektor E bertemu tepat di ujung vektor D.",
+    question: "Hubungan persamaan vektor yang benar berdasarkan susunan poligon tersebut adalah ....",
     options: [
-      "500 meter",
-      "100 meter",
-      "350 meter",
-      "700 meter",
-      "250√2 meter"
+      "A. A + B + C + D + E = 0",
+      "B. E = A + B + C + D",
+      "C. D = A + B + C + E",
+      "D. A + B = C + D + E",
+      "E. E = A - B + C - D"
     ],
-    correct: 0
+    answer: "B",
+    explanation: "Dalam metode poligon, vektor yang pangkalnya di pangkal vektor pertama (A) dan ujungnya di ujung vektor terakhir (D) adalah vektor resultan: E = A + B + C + D."
   },
   {
-    id: 6,
-    level: "C3 • Menerapkan | Pilihan Ganda",
-    stimulus: "Dua buah vektor gaya masing-masing bernilai F₁ = 8 N dan F₂ = 8 N bertitik tangkap sama dan saling mengapit sudut 120°.",
-    question: "Besar resultan kedua vektor gaya tersebut adalah...",
+    id: "VK-06",
+    type: "PG",
+    level: "C3",
+    topic: "Resultan Dua Vektor Membentuk Sudut",
+    stimulus: "Dua buah vektor gaya F₁ = 10 N dan F₂ = 10 N bertitik tangkap sama dan saling mengapit sudut 60°.",
+    question: "Besar resultan kedua vektor gaya tersebut adalah ....",
     options: [
-      "8 N",
-      "4 N",
-      "8√2 N",
-      "8√3 N",
-      "16 N"
+      "A. 10 N",
+      "B. 10√2 N",
+      "C. 10√3 N",
+      "D. 20 N",
+      "E. 5√3 N"
     ],
-    correct: 0
+    answer: "C",
+    explanation: "R = √(10² + 10² + 2·10·10·cos 60°) = √(100 + 100 + 200·0,5) = √300 = 10√3 N."
   },
   {
-    id: 7,
-    level: "C3 • Menerapkan | Pilihan Ganda",
-    stimulus: "Dua buah vektor gaya masing-masing F₁ = 6 N dan F₂ = 6 N saling mengapit sudut 60° pada sebuah cincin logam.",
-    question: "Besar resultan gaya yang bekerja pada cincin logam tersebut adalah...",
+    id: "VK-07",
+    type: "PG",
+    level: "C3",
+    topic: "Resultan Dua Vektor Sudut Tumpul",
+    stimulus: "Dua vektor kecepatan masing-masing bernilai v₁ = 6 m/s dan v₂ = 10 m/s memiliki titik tangkap yang sama dengan sudut apit sebesar 120°.",
+    question: "Besar resultan kedua vektor kecepatan tersebut adalah ....",
     options: [
-      "6√3 N",
-      "6 N",
-      "6√2 N",
-      "12 N",
-      "3√3 N"
+      "A. 4 m/s",
+      "B. 2√19 m/s",
+      "C. 14 m/s",
+      "D. 16 m/s",
+      "E. 8 m/s"
     ],
-    correct: 0
+    answer: "B",
+    explanation: "R = √(6² + 10² + 2·6·10·cos 120°) = √(36 + 100 + 120·(-0,5)) = √(136 - 60) = √76 = 2√19 m/s."
   },
   {
-    id: 8,
-    level: "C3 • Menerapkan | Benar - Salah",
-    stimulus: "Seorang petugas menarik koper dengan gaya F = 40 N membentuk sudut 60° terhadap lantai mendatar (cos 60° = 0,5; sin 60° = 0,5√3).",
-    question: "Tentukan kebenaran (Benar/Salah) komponen gaya tarik koper secara berurutan:\n1. Komponen gaya pada sumbu mendatar (Fx) bernilai 20 N.\n2. Komponen gaya pada sumbu vertikal (Fy) bernilai 20√3 N.\n3. Komponen gaya vertikal berfungsi menggerakkan koper maju ke depan.",
+    id: "VK-08",
+    type: "PG",
+    level: "C4",
+    topic: "Selisih Dua Vektor",
+    stimulus: "Dua buah vektor gaya F₁ = 8 N dan F₂ = 5 N bertitik tangkap sama dan mengapit sudut 60°.",
+    question: "Besar selisih kedua vektor tersebut (|F₁ - F₂|) adalah ....",
     options: [
-      "Benar – Benar – Salah",
-      "Benar – Benar – Benar",
-      "Benar – Salah – Salah",
-      "Salah – Benar – Benar",
-      "Salah – Salah – Benar"
+      "A. 3 N",
+      "B. 7 N",
+      "C. √129 N",
+      "D. 13 N",
+      "E. √39 N"
     ],
-    correct: 0
+    answer: "B",
+    explanation: "|F₁ - F₂| = √(F₁² + F₂² - 2·F₁·F₂·cos 60°) = √(64 + 25 - 2·8·5·0,5) = √(89 - 40) = √49 = 7 N."
   },
   {
-    id: 9,
-    level: "C3 • Menerapkan | Pilihan Ganda",
-    stimulus: "Diberikan dua buah vektor posisi dalam notasi vektor satuan: A = (3i + 4j) meter dan B = (5i - 2j) meter.",
-    question: "Besar resultan penjumlahan vektor R = A + B adalah...",
+    id: "VK-09",
+    type: "PG",
+    level: "C4",
+    topic: "Menentukan Sudut Apit Dua Vektor",
+    stimulus: "Dua buah vektor gaya yang besarnya sama, yakni F₁ = F₂ = 12 N, bekerja pada satu titik tangkap. Setelah diukur, besar resultan kedua gaya tersebut tepat sama dengan 12 N.",
+    question: "Besar sudut apit antara vektor F₁ dan F₂ adalah ....",
     options: [
-      "2√17 meter",
-      "8 meter",
-      "10 meter",
-      "6√2 meter",
-      "14 meter"
+      "A. 30°",
+      "B. 45°",
+      "C. 60°",
+      "D. 90°",
+      "E. 120°"
     ],
-    correct: 0
+    answer: "E",
+    explanation: "Jika F₁ = F₂ = F dan R = F, maka F² = F² + F² + 2F² cos θ → -F² = 2F² cos θ → cos θ = -0,5 → θ = 120°."
   },
   {
-    id: 10,
-    level: "C3 • Menerapkan | Pilihan Ganda",
-    stimulus: "Sebuah perahu penyeberangan sungai bergerak tegak lurus memotong arus sungai dengan kecepatan 4 m/s. Pada saat yang sama, arus air sungai mengalir sejajar tepi sungai dengan kecepatan 3 m/s.",
-    question: "Besar kecepatan resultan perahu yang diamati oleh orang yang berdiri diam di tepi sungai adalah...",
+    id: "VK-10",
+    type: "PG",
+    level: "C3",
+    topic: "Penguraian Komponen Vektor",
+    stimulus: "Seorang siswa menarik koper dengan gaya F = 40 N membentuk sudut elevasi 37° terhadap lantai mendatar (diketahui sin 37° = 0,6 dan cos 37° = 0,8).",
+    question: "Besar komponen gaya pada arah mendatar (Fx) dan arah vertikal (Fy) berturut-turut adalah ....",
     options: [
-      "5 m/s",
-      "1 m/s",
-      "7 m/s",
-      "3,5 m/s",
-      "4,5 m/s"
+      "A. Fx = 24 N dan Fy = 32 N",
+      "B. Fx = 32 N dan Fy = 24 N",
+      "C. Fx = 20 N dan Fy = 20√3 N",
+      "D. Fx = 32 N dan Fy = 32 N",
+      "E. Fx = 24 N dan Fy = 24 N"
     ],
-    correct: 0
+    answer: "B",
+    explanation: "Fx = F cos 37° = 40 × 0,8 = 32 N; Fy = F sin 37° = 40 × 0,6 = 24 N."
   },
   {
-    id: 11,
-    level: "C3 • Menerapkan | Pilihan Ganda Kompleks",
-    stimulus: "Sebuah vektor gaya F = 20 N berada pada kuadran I bidang Kartesius dan membentuk sudut 37° terhadap sumbu-X positif (sin 37° = 0,6 dan cos 37° = 0,8). Perhatikan pernyataan berikut:\n(1) Komponen vektor pada sumbu-X adalah +16 N.\n(2) Komponen vektor pada sumbu-Y adalah +12 N.\n(3) Jika ditulis dalam vektor satuan menjadi F = (16i + 12j) N.\n(4) Besar vektor jika dihitung dari √(Fx² + Fy²) menghasilkan 28 N.",
-    question: "Pernyataan yang benar ditunjukkan oleh nomor...",
+    id: "VK-11",
+    type: "PG",
+    level: "C4",
+    topic: "Resultan Tiga Vektor dengan Metode Analitis",
+    stimulus: "Tiga buah vektor gaya bekerja pada titik O pada bidang koordinat Kartesius: F₁ = 10 N ke arah sumbu-X positif (0°), F₂ = 10 N membentuk sudut 60° terhadap sumbu-X positif (kuadran I), dan F₃ = 10 N membentuk sudut 120° terhadap sumbu-X positif (kuadran II).",
+    question: "Besar resultan ketiga vektor gaya tersebut adalah ....",
     options: [
-      "(1), (2), dan (3)",
-      "(1) dan (2) saja",
-      "(1), (3), dan (4)",
-      "(2) dan (4) saja",
-      "(3) dan (4) saja"
+      "A. 10 N",
+      "B. 10√2 N",
+      "C. 10√3 N",
+      "D. 20 N",
+      "E. 30 N"
     ],
-    correct: 0
+    answer: "D",
+    explanation: "ΣFx = 10 cos 0° + 10 cos 60° + 10 cos 120° = 10 + 5 - 5 = 10 N. ΣFy = 0 + 10 sin 60° + 10 sin 120° = 5√3 + 5√3 = 10√3 N. R = √(10² + (10√3)²) = √(100 + 300) = 20 N."
   },
   {
-    id: 12,
-    level: "C3 • Menerapkan | Pilihan Ganda",
-    stimulus: "Tiga buah vektor gaya bekerja pada satu titik tangkap: F₁ = 10 N ke arah timur (0°), F₂ = 10 N membentuk sudut 120° terhadap sumbu-X positif, dan F₃ = 10 N membentuk sudut 240° terhadap sumbu-X positif.",
-    question: "Besar resultan ketiga vektor gaya simetris tersebut adalah...",
+    id: "VK-12",
+    type: "PG",
+    level: "C4",
+    topic: "Arah Resultan Vektor Analitis",
+    stimulus: "Dari hasil penjumlahan beberapa vektor perpindahan pada bidang XY diperoleh jumlah komponen pada sumbu-X sebesar ΣRx = -6 meter dan jumlah komponen pada sumbu-Y sebesar ΣRy = 6√3 meter.",
+    question: "Besar dan arah vektor resultan terhadap sumbu-X positif adalah ....",
     options: [
-      "0 N",
-      "10 N",
-      "10√3 N",
-      "20 N",
-      "30 N"
+      "A. 12 meter dengan sudut 60°",
+      "B. 12 meter dengan sudut 120°",
+      "C. 12 meter dengan sudut 150°",
+      "D. 6√2 meter dengan sudut 135°",
+      "E. 12 meter dengan sudut 300°"
     ],
-    correct: 0
+    answer: "B",
+    explanation: "R = √((-6)² + (6√3)²) = √(36 + 108) = 12 m. Karena Rx negatif dan Ry positif, resultan berada di kuadran II dengan tan α = 6√3 / (-6) = -√3 → α = 120°."
   },
   {
-    id: 13,
-    level: "C3 • Menerapkan | Pilihan Ganda",
-    stimulus: "Diketahui dua buah vektor gaya F₁ = 5 N dan F₂ = 3 N memiliki besar resultan R = 7 N.",
-    question: "Besar sudut apit θ antara vektor F₁ dan F₂ adalah...",
+    id: "VK-13",
+    type: "PG",
+    level: "C4",
+    topic: "Batas Nilai Resultan Dua Vektor",
+    stimulus: "Dua buah vektor gaya memiliki besar masing-masing 9 N dan 15 N. Sudut apit antara kedua vektor tersebut dapat diubah-ubah dari 0° hingga 180°.",
+    question: "Nilai resultan gaya yang TIDAK MUNGKIN dihasilkan oleh kedua vektor tersebut adalah ....",
     options: [
-      "60°",
-      "30°",
-      "45°",
-      "90°",
-      "120°"
+      "A. 6 N",
+      "B. 12 N",
+      "C. 18 N",
+      "D. 24 N",
+      "E. 26 N"
     ],
-    correct: 0
+    answer: "E",
+    explanation: "Rentang nilai resultan dua vektor berada di antara |F₁ - F₂| ≤ R ≤ (F₁ + F₂), yakni 6 N ≤ R ≤ 24 N. Jadi 26 N tidak mungkin dihasilkan."
   },
   {
-    id: 14,
-    level: "C3 • Menerapkan | Pilihan Ganda",
-    stimulus: "Diberikan dua buah vektor dalam ruang tiga dimensi: P = 2i + 3j - k dan Q = 4i - 2j + 2k.",
-    question: "Hasil perkalian titik (dot product) P · Q adalah...",
+    id: "VK-14",
+    type: "PG",
+    level: "C4",
+    topic: "Aplikasi Vektor pada Penyeberangan Sungai",
+    stimulus: "Sebuah perahu motor diarahkan tegak lurus menyeberangi sungai yang lebarnya 120 meter dengan kecepatan perahu terhadap air 4 m/s. Pada saat yang sama, air sungai mengalir sejajar tepi sungai dengan kecepatan arus 3 m/s.",
+    question: "Jarak lintasan aktual yang ditempuh perahu hingga tiba di seberang sungai adalah ....",
     options: [
-      "0",
-      "2",
-      "4",
-      "12",
-      "-4"
+      "A. 90 meter",
+      "B. 120 meter",
+      "C. 150 meter",
+      "D. 210 meter",
+      "E. 240 meter"
     ],
-    correct: 0
+    answer: "C",
+    explanation: "Waktu menyeberang t = 120 / 4 = 30 s. Perahu hanyut sejauh x = 3 × 30 = 90 m. Lintasan aktual s = √(120² + 90²) = 150 meter."
   },
   {
-    id: 15,
-    level: "C4 • Menganalisis | Pilihan Ganda",
-    stimulus: "Seorang kurir mengendarai motor menempuh rute berikut: pertama ke arah timur sejauh 6 km, lalu berbelok ke arah utara sejauh 8 km, kemudian berbelok ke arah barat sejauh 12 km.",
-    question: "Besar perpindahan total kurir dari titik awal hingga titik akhir adalah...",
+    id: "VK-15",
+    type: "PGK",
+    level: "C3",
+    topic: "Sifat-Sifat Penjumlahan Vektor",
+    stimulus: "Perhatikan pernyataan-pernyataan mengenai operasi penjumlahan dua buah vektor A dan B yang tidak nol berikut ini:\n(1) Penjumlahan vektor bersifat komutatif: A + B = B + A.\n(2) Besar resultan |A + B| selalu sama dengan jumlah aljabar |A| + |B| untuk semua sudut apit.\n(3) Resultan dua vektor bernilai maksimum ketika sudut apit kedua vektor adalah 0°.\n(4) Resultan dua vektor bernilai nol hanya jika besar kedua vektor sama dan berlawanan arah (sudut 180°).",
+    question: "Pilihlah SEMUA pernyataan yang benar (jawaban benar lebih dari satu)!",
     options: [
-      "10 km",
-      "6 km",
-      "14 km",
-      "20 km",
-      "26 km"
+      "Pernyataan (1) benar",
+      "Pernyataan (2) benar",
+      "Pernyataan (3) benar",
+      "Pernyataan (4) benar"
     ],
-    correct: 0
+    answer: ["Pernyataan (1) benar", "Pernyataan (3) benar", "Pernyataan (4) benar"],
+    explanation: "Pernyataan (1), (3), dan (4) benar. Pernyataan (2) salah karena |A + B| = |A| + |B| hanya berlaku saat sudut apit 0°."
   },
   {
-    id: 16,
-    level: "C4 • Menganalisis | Pilihan Ganda Kompleks",
-    stimulus: "Dalam metode penjumlahan vektor secara poligon (segi banyak), lima buah vektor perpindahan A, B, C, D, dan E digambarkan saling menyambung ujung pangkalnya hingga pangkal vektor A bertemu kembali dengan ujung vektor E membentuk bangun segi lima tertutup. Perhatikan hasil analisis berikut:\n(1) Resultan kelima vektor tersebut sama dengan nol (R = 0).\n(2) Vektor E merupakan vektor negatif dari jumlah keempat vektor lainnya (E = -(A + B + C + D)).\n(3) Jumlah komponen seluruh vektor pada sumbu-X sama dengan nol (ΣFx = 0).\n(4) Panjang lintasan total yang ditempuh benda juga sama dengan nol.",
-    question: "Pernyataan analisis yang tepat ditunjukkan oleh nomor...",
+    id: "VK-16",
+    type: "PGK",
+    level: "C4",
+    topic: "Analisis Komponen Vektor pada Kuadran",
+    stimulus: "Sebuah vektor gaya F = 20 N digambarkan pada bidang koordinat Kartesius di kuadran III dengan sudut 30° terhadap sumbu-X negatif (atau 210° terhadap sumbu-X positif). Diketahui sin 30° = 0,5 dan cos 30° = 0,5√3.",
+    question: "Pilihlah SEMUA pernyataan yang tepat mengenai komponen vektor F tersebut!",
     options: [
-      "(1), (2), dan (3)",
-      "(1) dan (2) saja",
-      "(1), (3), dan (4)",
-      "(2) dan (4) saja",
-      "(1), (2), (3), dan (4)"
+      "Komponen vektor pada sumbu-X (Fx) bernilai negatif (-10√3 N)",
+      "Komponen vektor pada sumbu-Y (Fy) bernilai negatif (-10 N)",
+      "Komponen vektor pada sumbu-X (Fx) bernilai positif (+10 N)",
+      "Jika sudut terhadap sumbu-X negatif diperbesar menjadi 60°, nilai |Fy| menjadi lebih besar daripada |Fx|"
     ],
-    correct: 0
+    answer: [
+      "Komponen vektor pada sumbu-X (Fx) bernilai negatif (-10√3 N)",
+      "Komponen vektor pada sumbu-Y (Fy) bernilai negatif (-10 N)",
+      "Jika sudut terhadap sumbu-X negatif diperbesar menjadi 60°, nilai |Fy| menjadi lebih besar daripada |Fx|"
+    ],
+    explanation: "Di kuadran III, baik Fx maupun Fy bertanda negatif: Fx = -20 cos 30° = -10√3 N dan Fy = -20 sin 30° = -10 N. Saat sudut 60°, |Fy| = 10√3 N > |Fx| = 10 N."
   },
   {
-    id: 17,
-    level: "C4 • Menganalisis | Pilihan Ganda",
-    stimulus: "Dua buah vektor gaya yang sama besar (F₁ = F₂ = F) bekerja pada sebuah benda. Agar besar resultan kedua vektor tersebut sama dengan √2 kali besar masing-masing vektor (R = F√2), sudut apitnya harus diatur secara tepat.",
-    question: "Besar sudut apit antara kedua vektor tersebut adalah...",
+    id: "VK-17",
+    type: "PGK",
+    level: "C4",
+    topic: "Kesetimbangan Tiga Gaya Vektor",
+    stimulus: "Sebuah lampu gantung seberat 60 N ditahan oleh dua utas tali ringan yang simetris sehingga masing-masing tali membentuk sudut 30° terhadap langit-langit mendatar (sudut 60° terhadap garis vertikal). Diketahui sin 30° = 0,5 dan cos 30° = 0,5√3.",
+    question: "Berdasarkan analisis komponen vektor gaya pada sistem setimbang (ΣFx = 0 dan ΣFy = 0), pilihlah SEMUA pernyataan yang benar!",
     options: [
-      "90°",
-      "30°",
-      "45°",
-      "60°",
-      "120°"
+      "Komponen tegangan tali arah horizontal saling meniadakan (T₁ cos 30° = T₂ cos 30°)",
+      "Jumlah komponen tegangan tali arah vertikal ke atas sama dengan berat lampu 60 N",
+      "Besar gaya tegangan pada masing-masing tali adalah 60 N",
+      "Besar gaya tegangan pada masing-masing tali adalah 30 N"
     ],
-    correct: 0
+    answer: [
+      "Komponen tegangan tali arah horizontal saling meniadakan (T₁ cos 30° = T₂ cos 30°)",
+      "Jumlah komponen tegangan tali arah vertikal ke atas sama dengan berat lampu 60 N",
+      "Besar gaya tegangan pada masing-masing tali adalah 60 N"
+    ],
+    explanation: "Karena simetris, T₁ = T₂ = T. ΣFy = 0 → 2 T sin 30° = 60 N → 2 T (0,5) = 60 N → T = 60 N."
   },
   {
-    id: 18,
-    level: "C4 • Menganalisis | Benar - Salah",
-    stimulus: "Sebuah sungai selebar 120 meter memiliki arus air mengalir ke timur dengan kecepatan 3 m/s. Seorang perenang hendak menyeberang dari tepi selatan ke tepi utara dengan kecepatan renang 4 m/s terhadap air.",
-    question: "Tentukan kebenaran (Benar/Salah) hasil analisis penyeberangan tersebut secara berurutan apabila perenang mengarahkan tubuhnya lurus ke utara:\n1. Waktu yang diperlukan perenang untuk sampai di tepi seberang adalah 30 detik.\n2. Perenang akan tiba di tepi utara pada posisi bergeser 90 meter ke arah timur dari titik lurus di depannya.\n3. Kecepatan resultan perenang terhadap pengamat di darat adalah 5 m/s.",
-    options: [
-      "Benar – Benar – Benar",
-      "Benar – Benar – Salah",
-      "Benar – Salah – Benar",
-      "Salah – Benar – Benar",
-      "Salah – Salah – Benar"
-    ],
-    correct: 0
+    id: "VK-18",
+    type: "BS",
+    level: "C2",
+    topic: "Metode Jajargenjang dan Poligon",
+    stimulus: "Dalam menggambar penjumlahan dua buah vektor F₁ dan F₂ secara grafis menggunakan metode jajargenjang, kedua pangkal vektor ditempatkan pada satu titik tangkap yang sama.",
+    question: "Diagonal jajargenjang yang ditarik dari titik tangkap kedua vektor menuju titik sudut di seberangnya menyatakan vektor resultan R = F₁ + F₂.",
+    options: ["Benar", "Salah"],
+    answer: "Benar",
+    explanation: "Pada metode jajargenjang, pangkal kedua vektor berimpit dan diagonal yang bertitik tangkap sama menyatakan vektor resultan."
   },
   {
-    id: 19,
-    level: "C4 • Menganalisis | Pilihan Ganda",
-    stimulus: "Tiga buah vektor gaya bekerja pada pusat koordinat Kartesius: F₁ = 10 N berarah 30° terhadap sumbu-X positif, F₂ = 10 N berarah 150° terhadap sumbu-X positif, dan F₃ = 10 N berarah 270° (sumbu-Y negatif). (sin 30° = 0,5; cos 30° = 0,5√3).",
-    question: "Besar dan arah resultan ketiga vektor gaya tersebut adalah...",
-    options: [
-      "0 N (setimbang)",
-      "10 N ke arah sumbu-Y positif",
-      "10 N ke arah sumbu-Y negatif",
-      "10√3 N ke arah sumbu-X positif",
-      "20 N ke arah 90°"
-    ],
-    correct: 0
+    id: "VK-19",
+    type: "BS",
+    level: "C3",
+    topic: "Resultan Vektor Tegak Lurus",
+    stimulus: "Dua buah vektor gaya F₁ = 9 N dan F₂ = 12 N bekerja pada sebuah benda dengan arah saling tegak lurus satu sama lain (membentuk sudut 90°).",
+    question: "Besar resultan kedua vektor gaya tersebut adalah 21 N.",
+    options: ["Benar", "Salah"],
+    answer: "Salah",
+    explanation: "Karena saling tegak lurus (cos 90° = 0), R = √(9² + 12²) = √(81 + 144) = √225 = 15 N, bukan 21 N."
   },
   {
-    id: 20,
-    level: "C4 • Menganalisis | Pilihan Ganda",
-    stimulus: "Sebuah vektor kecepatan v diuraikan menjadi dua komponen yang saling tegak lurus, yaitu vx dan vy. Jika diketahui perbandingan besar komponen mendatar dan komponen vertikalnya adalah vx : vy = 1 : √3.",
-    question: "Besar sudut yang dibentuk vektor kecepatan v terhadap sumbu-X positif adalah...",
-    options: [
-      "60°",
-      "30°",
-      "45°",
-      "37°",
-      "53°"
-    ],
-    correct: 0
+    id: "VK-20",
+    type: "BS",
+    level: "C4",
+    topic: "Resultan Vektor Nol (Poligon Tertutup)",
+    stimulus: "Empat buah vektor perpindahan A, B, C, dan D digambarkan secara berurutan dengan metode poligon sehingga ujung vektor D bertemu kembali tepat di titik pangkal vektor A membentuk segi empat tertutup.",
+    question: "Besar resultan keempat vektor perpindahan tersebut adalah sama dengan nol.",
+    options: ["Benar", "Salah"],
+    answer: "Benar",
+    explanation: "Apabila rangkaian vektor dengan metode poligon membentuk kurva tertutup (ujung vektor terakhir kembali ke pangkal vektor pertama), maka vektor resultannya adalah vektor nol."
   }
 ];
-
 // ============================================================================
 // 3. UTILITAS PENGACAK, ALARM ANTI-CURANG & FULLSCREEN
 // ============================================================================
