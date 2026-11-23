@@ -1171,12 +1171,14 @@ export default function App() {
   // D. LOGIKA PENGERJAAN KUIS & PENILAIAN
   // --------------------------------------------------------------------------
   const calculateScore = (ansMap, qList = activeQuestions) => {
-    if (!qList || qList.length === 0) return 0;
-    let correctCount = 0;
-    qList.forEach((q) => {
-      if (ansMap[q.id] === q.correct) correctCount++;
-    });
-    return Math.round((correctCount / qList.length) * 100);
+   if (q.type === "PG") {
+  const isCorrect =
+    userAns === q.answer ||
+    (typeof userAns === "string" &&
+      q.answer.length === 1 &&
+      userAns.trim().startsWith(q.answer + "."));
+  if (isCorrect) correctCount += 1;
+}
   };
 
   const handleStartQuiz = async (e) => {
