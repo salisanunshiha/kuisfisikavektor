@@ -7,21 +7,21 @@ import {
 } from 'https://esm.sh/lucide-react@0.400.0';
 
 // ============================================================================
-// 1. KONFIGURASI GOOGLE APPS SCRIPT (GANTI DENGAN URL /exec ANDA)
+// 1. KONFIGURASI GOOGLE APPS SCRIPT
 // ============================================================================
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwaKPbzI33H5yEMZtSsNH5WAxUkJg0fTdw_WZBQGsVtPh5RDswPT0UdqbVu1SLeuKbY2g/exec";
+
 // PENGATURAN UJIAN VEKTOR KELAS X
 const TEACHER_PIN = "Salisa1507#";
 const EXAM_DURATION_SECONDS = 75 * 60; // 75 Menit
 const QUIZ_QUESTION_COUNT = 15;        // 15 Soal Acak per Siswa dari 50 Bank Soal Vektor
+
 // ============================================================================
 // 2. BANK 50 SOAL VEKTOR BERBASIS STIMULUS (KELAS X • C1 - C4)
 //    Bentuk Soal: Pilihan Ganda, Pilihan Ganda Kompleks, & Benar-Salah
 // ============================================================================
 const QUESTION_BANK = [
-  // =========================================================================
   // KELOMPOK A: KONSEP DASAR BESARAN SKALAR & VEKTOR (VK-01 s.d. VK-06)
-  // =========================================================================
   {
     id: "VK-01",
     type: "PG",
@@ -125,9 +125,7 @@ const QUESTION_BANK = [
     explanation: "Jarak tempuh adalah panjang lintasan keliling lingkaran = 2πR = 2 × (22/7) × 70 = 440 m. Karena kembali ke posisi awal, perpindahannya = 0 m."
   },
 
-  // =========================================================================
   // KELOMPOK B: PENJUMLAHAN VEKTOR SEGARIS & TEGAK LURUS (VK-07 s.d. VK-14)
-  // =========================================================================
   {
     id: "VK-07",
     type: "PG",
@@ -265,9 +263,7 @@ const QUESTION_BANK = [
     explanation: "v = √(300² + 400²) = √(90.000 + 160.000) = √250.000 = 500 km/jam."
   },
 
-  // =========================================================================
   // KELOMPOK C: METODE POLIGON & JAJARGENJANG (VK-15 s.d. VK-20)
-  // =========================================================================
   {
     id: "VK-15",
     type: "PG",
@@ -371,9 +367,7 @@ const QUESTION_BANK = [
     explanation: "Agar tiga vektor dapat membentuk segitiga tertutup (resultan nol), jumlah dua sisi terpendek harus lebih besar atau sama dengan sisi terpanjang. Pada opsi C: 6 + 8 = 14 > 10."
   },
 
-  // =========================================================================
   // KELOMPOK D: RUMUS KOSINUS, SELISIH VEKTOR & SUDUT APIT (VK-21 s.d. VK-30)
-  // =========================================================================
   {
     id: "VK-21",
     type: "PG",
@@ -545,9 +539,7 @@ const QUESTION_BANK = [
     explanation: "F₁ + F₂ = 17 dan F₁ - F₂ = 7 → diperoleh F₁ = 12 N dan F₂ = 5 N. Jika saling tegak lurus, R = √(12² + 5²) = √169 = 13 N."
   },
 
-  // =========================================================================
   // KELOMPOK E: PENGURAIAN KOMPONEN & METODE ANALITIS (VK-31 s.d. VK-40)
-  // =========================================================================
   {
     id: "VK-31",
     type: "PG",
@@ -631,7 +623,7 @@ const QUESTION_BANK = [
       "E. 40 N"
     ],
     answer: "A",
-    explanation: "ΣFx = 20 + 20 cos 53° - 32 = 20 + 12 - 32 = 0 N. ΣFy = 20 sin 53° = 20 × 0,8 = 16 N... Tunggu: jika ΣFx = 0 dan ΣFy = 16 N, R = 16 N (Opsi A)."
+    explanation: "ΣFx = 20 + 20 cos 53° - 32 = 20 + 12 - 32 = 0 N. ΣFy = 20 sin 53° = 20 × 0,8 = 16 N. Maka R = √(0² + 16²) = 16 N."
   },
   {
     id: "VK-36",
@@ -719,9 +711,7 @@ const QUESTION_BANK = [
     explanation: "Agar setimbang, F₃x = 12 N (ke timur) dan F₃y = 16 N (ke utara). Maka F₃ = √(12² + 16²) = √(144 + 256) = 20 N."
   },
 
-  // =========================================================================
   // KELOMPOK F: PILIHAN GANDA KOMPLEKS (PGK) (VK-41 s.d. VK-45)
-  // =========================================================================
   {
     id: "VK-41",
     type: "PGK",
@@ -819,9 +809,7 @@ const QUESTION_BANK = [
     explanation: "Jarak A-B-C-D = 80 + 60 + 80 = 220 m. Posisi akhir di D berjarak lurus AD = BC = 60 m dari titik awal A. Saat di C, perpindahan AC = √(80² + 60²) = 100 m."
   },
 
-  // =========================================================================
   // KELOMPOK G: BENAR - SALAH (BS) (VK-46 s.d. VK-50)
-  // =========================================================================
   {
     id: "VK-46",
     type: "BS",
@@ -894,17 +882,30 @@ const shuffleArray = (arr) => {
 const generateStudentExamSet = () => {
   const selected = shuffleArray(QUESTION_BANK).slice(0, QUIZ_QUESTION_COUNT);
   return selected.map((q) => {
-    const indexedOptions = q.options.map((text, idx) => ({
-      text,
-      isCorrect: idx === q.correct
-    }));
-    const shuffledOptions = shuffleArray(indexedOptions);
-    const newCorrectIdx = shuffledOptions.findIndex((opt) => opt.isCorrect);
-    return {
-      ...q,
-      options: shuffledOptions.map((opt) => opt.text),
-      correct: newCorrectIdx
-    };
+    if (q.type === 'PG') {
+      // Hapus awalan "A. ", "B. " lama agar saat opsi diacak huruf A-E tetap urut rapi
+      const cleaned = q.options.map((opt) => {
+        const letter = opt.trim().charAt(0);
+        const textOnly = opt.replace(/^[A-E]\.\s*/, '');
+        return { text: textOnly, isCorrect: letter === q.answer };
+      });
+      const shuffled = shuffleArray(cleaned);
+      const correctIdx = shuffled.findIndex((o) => o.isCorrect);
+      return {
+        ...q,
+        options: shuffled.map((o) => o.text),
+        correct: correctIdx
+      };
+    }
+    if (q.type === 'PGK') {
+      const shuffled = shuffleArray(q.options);
+      return {
+        ...q,
+        options: shuffled
+      };
+    }
+    // Tipe BS ("Benar", "Salah") tidak perlu diacak urutannya
+    return { ...q };
   });
 };
 
@@ -1021,7 +1022,6 @@ export default function App() {
     }
   }, [isScriptConfigured]);
 
-  // Auto-refresh setiap 8 detik saat Dasbor Guru terbuka
   useEffect(() => {
     if (view !== 'teacher-dashboard') return;
     fetchRecordsFromSheet(true);
@@ -1090,7 +1090,7 @@ export default function App() {
   };
 
   // --------------------------------------------------------------------------
-  // B. TIMER MUNDUR 60 MENIT & AUTO-SUBMIT
+  // B. TIMER MUNDUR 75 MENIT & AUTO-SUBMIT
   // --------------------------------------------------------------------------
   useEffect(() => {
     if (view !== 'quiz') return;
@@ -1168,17 +1168,47 @@ export default function App() {
   }, [view]);
 
   // --------------------------------------------------------------------------
-  // D. LOGIKA PENGERJAAN KUIS & PENILAIAN
+  // D. LOGIKA PENGERJAAN KUIS & PENILAIAN (PG, PGK, BS)
   // --------------------------------------------------------------------------
-  const calculateScore = (ansMap, qList = activeQuestions) => {
-   if (q.type === "PG") {
-  const isCorrect =
-    userAns === q.answer ||
-    (typeof userAns === "string" &&
-      q.answer.length === 1 &&
-      userAns.trim().startsWith(q.answer + "."));
-  if (isCorrect) correctCount += 1;
-}
+  const evaluateQuizResult = (ansMap, qList = activeQuestions) => {
+    if (!qList || qList.length === 0) return { score: 0, correctCount: 0, answeredCount: 0 };
+
+    let correctCount = 0;
+    let answeredCount = 0;
+
+    qList.forEach((q) => {
+      const userAns = ansMap[q.id];
+      if (q.type === 'PGK') {
+        if (Array.isArray(userAns) && userAns.length > 0) {
+          answeredCount += 1;
+          if (
+            Array.isArray(q.answer) &&
+            userAns.length === q.answer.length &&
+            q.answer.every((item) => userAns.includes(item))
+          ) {
+            correctCount += 1;
+          }
+        }
+      } else if (q.type === 'BS') {
+        if (userAns !== undefined && userAns !== null) {
+          answeredCount += 1;
+          if (userAns === q.answer) {
+            correctCount += 1;
+          }
+        }
+      } else {
+        // Tipe PG
+        if (userAns !== undefined && userAns !== null) {
+          answeredCount += 1;
+          if (userAns === q.correct) {
+            correctCount += 1;
+          }
+        }
+      }
+    });
+
+    const score = Math.round((correctCount / qList.length) * 100);
+    return { score, correctCount, answeredCount };
   };
 
   const handleStartQuiz = async (e) => {
@@ -1222,17 +1252,31 @@ export default function App() {
     });
   };
 
-  const handleSelectOption = async (questionId, optionIndex) => {
-    const updatedAnswers = { ...answers, [questionId]: optionIndex };
+  const handleSelectOption = async (question, optionIndex, optionText) => {
+    let updatedValue;
+
+    if (question.type === 'PGK') {
+      const prevArr = Array.isArray(answers[question.id]) ? answers[question.id] : [];
+      if (prevArr.includes(optionText)) {
+        updatedValue = prevArr.filter((item) => item !== optionText);
+      } else {
+        updatedValue = [...prevArr, optionText];
+      }
+    } else if (question.type === 'BS') {
+      updatedValue = optionText;
+    } else {
+      updatedValue = optionIndex;
+    }
+
+    const updatedAnswers = { ...answers, [question.id]: updatedValue };
     setAnswers(updatedAnswers);
 
-    const score = calculateScore(updatedAnswers, activeQuestions);
-    const correctCount = activeQuestions.filter(q => updatedAnswers[q.id] === q.correct).length;
+    const { score, correctCount, answeredCount } = evaluateQuizResult(updatedAnswers, activeQuestions);
 
     await syncRecordToSheet(sessionId, {
       skor: score,
       benar: correctCount,
-      terjawab: Object.keys(updatedAnswers).length
+      terjawab: answeredCount
     });
   };
 
@@ -1241,8 +1285,7 @@ export default function App() {
     const st = quizStateRef.current;
     const finalAnswers = isAutoTimeout ? st.answers : answers;
     const qList = isAutoTimeout ? st.activeQuestions : activeQuestions;
-    const score = calculateScore(finalAnswers, qList);
-    const correctCount = qList.filter(q => finalAnswers[q.id] === q.correct).length;
+    const { score, correctCount, answeredCount } = evaluateQuizResult(finalAnswers, qList);
     const endTime = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
 
     setFinishTimeStr(endTime);
@@ -1251,7 +1294,7 @@ export default function App() {
     await syncRecordToSheet(st.sessionId || sessionId, {
       skor: score,
       benar: correctCount,
-      terjawab: Object.keys(finalAnswers).length,
+      terjawab: answeredCount,
       status: isAutoTimeout ? 'Selesai (Waktu Habis)' : 'Selesai',
       waktuSelesai: endTime
     });
@@ -1299,7 +1342,7 @@ export default function App() {
   // RENDER TAMPILAN
   // ==========================================================================
   const currentQ = activeQuestions[currentIdx];
-  const answeredCount = Object.keys(answers).length;
+  const { answeredCount } = evaluateQuizResult(answers, activeQuestions);
   const totalQ = activeQuestions.length || QUIZ_QUESTION_COUNT;
 
   return (
@@ -1313,7 +1356,7 @@ export default function App() {
             </div>
             <div>
               <h1 className="font-bold text-slate-900 leading-tight">FISIKA INTERAKTIF X</h1>
-              <p className="text-xs text-slate-500">Asesmen Vektor Berbasis Stimulus • Durasi 60 Menit</p>
+              <p className="text-xs text-slate-500">Asesmen Vektor Berbasis Stimulus • Durasi 75 Menit</p>
             </div>
           </div>
 
@@ -1361,7 +1404,7 @@ export default function App() {
               </span>
               <h2 className="text-2xl font-bold">Kuis Interaktif Vektor</h2>
               <p className="text-indigo-100 text-sm mt-1">
-                15 Soal Acak dari Bank 20 Soal Stimulus • Bentuk Soal Variatif (PG, PG Kompleks, Benar–Salah) • Tingkat Kognitif C1–C4 • Waktu 60 Menit.
+                15 Soal Acak dari Bank 50 Soal Stimulus • Bentuk Soal Variatif (PG, PG Kompleks, Benar–Salah) • Tingkat Kognitif C1–C4 • Waktu 75 Menit.
               </p>
             </div>
 
@@ -1426,7 +1469,7 @@ export default function App() {
                 </p>
                 <ul className="list-disc pl-5 space-y-1">
                   <li>Setiap peserta menerima <strong>15 soal berbeda</strong> (Pilihan Ganda, PG Kompleks, & Benar-Salah) dengan posisi opsi A–E teracak otomatis.</li>
-                  <li>Aplikasi otomatis masuk ke mode <strong>Layar Penuh (Fullscreen)</strong> selama 60 menit pengerjaan.</li>
+                  <li>Aplikasi otomatis masuk ke mode <strong>Layar Penuh (Fullscreen)</strong> selama <strong>75 menit</strong> pengerjaan.</li>
                   <li>Dilarang berpindah tab, membuka jendela kedua (<em>split-screen</em> / <em>floating window</em>), atau keluar layar penuh karena akan memicu <strong>Alarm Peringatan</strong> dan tercatat di laporan guru.</li>
                 </ul>
               </div>
@@ -1469,7 +1512,10 @@ export default function App() {
           <div className="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm mb-4">
             <div className="flex flex-wrap gap-1.5 justify-center">
               {activeQuestions.map((q, idx) => {
-                const isAnswered = answers[q.id] !== undefined;
+                const ansVal = answers[q.id];
+                const isAnswered = q.type === 'PGK'
+                  ? Array.isArray(ansVal) && ansVal.length > 0
+                  : ansVal !== undefined && ansVal !== null;
                 const isCurrent = idx === currentIdx;
                 return (
                   <button
@@ -1495,9 +1541,14 @@ export default function App() {
               <span className="font-bold text-sm text-slate-800">
                 Soal Nomor {currentIdx + 1} dari {totalQ}
               </span>
-              <span className="px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-800 border border-indigo-200 text-xs font-semibold">
-                {currentQ.level}
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="px-2.5 py-1 rounded-md bg-slate-200 text-slate-700 text-xs font-semibold">
+                  {currentQ.type === 'PGK' ? 'Pilihan Ganda Kompleks' : currentQ.type === 'BS' ? 'Benar – Salah' : 'Pilihan Ganda'}
+                </span>
+                <span className="px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-800 border border-indigo-200 text-xs font-semibold">
+                  {currentQ.level}
+                </span>
+              </div>
             </div>
 
             <div className="p-6 space-y-5">
@@ -1517,12 +1568,17 @@ export default function App() {
 
               <div className="space-y-2.5 pt-1">
                 {currentQ.options.map((opt, oIdx) => {
-                  const isSelected = answers[currentQ.id] === oIdx;
+                  const ansVal = answers[currentQ.id];
+                  const isSelected = currentQ.type === 'PGK'
+                    ? Array.isArray(ansVal) && ansVal.includes(opt)
+                    : currentQ.type === 'BS'
+                    ? ansVal === opt
+                    : ansVal === oIdx;
                   const letter = String.fromCharCode(65 + oIdx);
                   return (
                     <button
                       key={oIdx}
-                      onClick={() => handleSelectOption(currentQ.id, oIdx)}
+                      onClick={() => handleSelectOption(currentQ, oIdx, opt)}
                       className={`w-full text-left p-3.5 rounded-xl border transition flex items-start gap-3 ${
                         isSelected
                           ? 'bg-indigo-50 border-indigo-600 ring-1 ring-indigo-600 text-indigo-950 font-medium'
@@ -1532,7 +1588,7 @@ export default function App() {
                       <span className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${
                         isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600'
                       }`}>
-                        {letter}
+                        {currentQ.type === 'PGK' ? (isSelected ? '✓' : '☐') : letter}
                       </span>
                       <span className="text-sm pt-0.5 leading-relaxed">{opt}</span>
                     </button>
@@ -1561,12 +1617,7 @@ export default function App() {
                 </button>
               ) : (
                 <button
-                  onClick={() => {
-                    if (answeredCount < totalQ) {
-                      if (!window.confirm(`Anda baru menjawab ${answeredCount} dari ${totalQ} soal. Yakin ingin mengumpulkan jawaban sekarang?`)) return;
-                    }
-                    handleFinishQuiz(false);
-                  }}
+                  onClick={() => handleFinishQuiz(false)}
                   className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold flex items-center gap-1.5 shadow transition"
                 >
                   <CheckCircle2 className="w-4 h-4" />
@@ -1587,7 +1638,7 @@ export default function App() {
             </div>
             <h2 className="text-2xl font-bold text-slate-900">Jawaban Berhasil Dikumpulkan</h2>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Terima kasih, <strong>{studentName}</strong> ({studentClass}). Seluruh respons kuis Vektor Anda telah tercatat otomatis ke Google Spreadsheet guru.
+              Terima kasih, <strong>{studentName}</strong> ({studentClass}). Seluruh respons kuis Vektor (durasi 75 menit) Anda telah tercatat otomatis ke Google Spreadsheet guru.
             </p>
 
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-left text-xs space-y-2 text-slate-700">
